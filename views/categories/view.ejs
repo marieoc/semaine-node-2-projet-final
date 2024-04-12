@@ -1,0 +1,16 @@
+<h1>Catégories</h1>
+
+<% if (categories) { %>
+    <ul clas="w-full m-[2rem]">
+        <% for (let category of categories) { %>
+            <li class="w-full flex gap-[1rem] justify-between">
+                <%= category.name %>
+                <form action="/delete-category/<%= category.id %>" method="POST">
+                    <button type="submit">X</button>
+                </form>
+            </li>
+        <% } %>
+    </ul>
+<% } %>
+
+<%- include('../components/form-category.ejs') %>

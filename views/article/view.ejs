@@ -1,0 +1,29 @@
+<section class="w-full flex flex-col items-center">
+    <div class="relative w-full">
+        <img class="w-full h-[80vh] object-cover" src="/uploads/<%= article.image %>" alt="<%= article.alt %>">
+        <div class="absolute bottom-0 inset-x-0 flex items-center justify-center">
+            <h1 class="white-pill text-xl"><%= article.title %></h1>
+        </div>
+    </div>
+    <div class="w-full p-[2rem] max-w-[600px]">
+        <%= article.content %>
+    </div>
+</section>
+
+<% if (relatedArticles.length !== 0) { %>
+<aside class="w-full flex flex-col items-center my-[2rem]">
+    <h2 class="mb-[1rem]">Articles dans la même catégorie</h2>
+    <div class="flex flex-wrap items-center justify-center gap-[2rem]">
+            <% for (let article of relatedArticles) { %>
+                <article class="w-full max-w-[300px]">
+                    <a class="w-full block space-y-4" href="/article/<%= article.id %>">
+                        <img class="w-full h-[200px] max-w-[300px] object-cover" src="/uploads/<%= article.image %>" alt="<%= article.alt %>">
+                        <h2 class="text-center article-card__title"><%= article.title %></h2>
+                        <div>Catégorie: <span><%= article.category_name %></span></div>
+                        <a href="/edit-article/<%= article.id %>">Modifier l'article</a>
+                    </a>
+                </article>
+            <% } %>
+        </div>
+    </aside>
+<% } %>

@@ -1,0 +1,64 @@
+<form 
+    <% if (article) { %>
+        action="/edit-article/<%= article.id %>"
+    <% } else { %>
+        action="/add-article"
+    <% } %>
+    method="POST"
+    enctype="multipart/form-data"
+    class="w-full max-w-[600px] p-3 flex flex-col items-center gap-[2rem]"
+>
+
+    <label class="w-full" for="">Titre :
+        <input
+            type="text"
+            class="w-full border border-gray rounded-lg"
+            name="title"
+            value="<%= article && article.title %>"
+        >
+    </label>
+
+    <label class="w-full" for="">Content :
+        <textarea class="w-full border border-gray rounded-lg" name="content" id="" cols="30" rows="10"><%= article && article.content %></textarea>
+    </label>
+
+    <label class="w-full" for="">Image :
+        <input
+            type="file"
+            class="w-full border border-gray rounded-lg"
+            name="image"
+        >
+        <% if (article && article.image) { %>
+            <img width="100" height="100" class="object-cover" src="/uploads/<%= article.image %>" alt="">
+        <% } %>
+    </label>
+
+    <label class="w-full" for="">Alt :
+        <input
+            type="text"
+            class="w-full border border-gray rounded-lg"
+            name="alt"
+            value="<%= article && article.alt %>"
+        >
+    </label>
+
+    <label class="w-full" for="">Catégorie:
+        <select name="category" id="" class="w-full border border-gray rounded-lg">
+            <% for (let category of categories) { %>
+                <option 
+                    value="<%= category.id %>"
+                    <% if (article && category.id == article.category_id) { %>
+                        selected
+                    <% } %>
+                >
+                    <%= category.name %>
+                </option>
+            <% } %>
+        </select>
+    </label>
+
+    <div class="w-full p-2 flex items-center justify-center">
+        <button type="submit" class="">Submit</button>
+    </div>
+
+</form>

@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.white-pill {
+    background-color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 33px 33px 0 0;
+}
+
+.article-card__title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0; 
+}
